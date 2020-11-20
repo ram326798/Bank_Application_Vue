@@ -2,22 +2,23 @@
 
 steps to create new project to copy the code
 
- npm install -g vue-cli
- npm i -g @vue/cli-init
- vue init webpack my-project
- cd my-project
- npm install bootstrap
- npm install axios
- npm run dev
+ 1.npm install -g vue-cli
+ 2.npm i -g @vue/cli-init
+ 3.vue init webpack my-project
+ 4.cd my-project
+ 5.npm install bootstrap
+ 6.npm install axios
+ 7.npm run dev
  
  
  steps to run the code directly after cloning
- npm install -g vue-cli
- npm i -g @vue/cli-init
- cd my-project
- npm install bootstrap
- npm install axios
- npm install vue-router
- npm install vue
- npm run serve 
- or npm run dev
+ 1.npm install -g vue-cli
+ 2.npm i -g @vue/cli-init
+ 3.cd my-project
+ 4.npm install bootstrap
+ 5.npm install axios
+ 6.npm install vue-router
+ 7.npm install vue
+ 8.npm run serve 
+ or
+ 8.npm run dev

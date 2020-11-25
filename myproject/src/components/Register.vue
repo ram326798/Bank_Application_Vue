@@ -1,4 +1,5 @@
 <template>
+  <!--Registration Template-->
   <div class="container">
     <form>
       <div class="well">
@@ -57,8 +58,6 @@
 import axios from "axios";
 import router from "../router";
 export default {
-  // name: 'Register',
-
   data() {
     return {
       User: {

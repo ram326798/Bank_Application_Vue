@@ -1,4 +1,5 @@
 <template>
+  <!--Apply Loan Page-->
   <div class="container">
     <form>
       <div class="well">
@@ -54,6 +55,7 @@ export default {
   name: "Loan",
   data() {
     return {
+      // initialising variables
       username: this.$route.params.username,
       Loan: {
         username: this.username,
@@ -67,6 +69,7 @@ export default {
   },
   methods: {
     addToAPI() {
+      // assigning the update values to new loan variable
       let newLoan = {
         username: this.username,
         loan_type: this.Loan.loan_type,
@@ -77,10 +80,14 @@ export default {
       };
       console.log(newLoan);
       axios
+        // applying loan
         .post("http://127.0.0.1:5000/accounts/login/" + this.username + "/loans", newLoan)
         .then((response) => {
           console.log(response);
-          router.push({ name: "ViewLoans", params: { username: this.username } });
+          router.push({
+            name: "ViewLoans",
+            params: { username: this.username },
+          });
         })
         .catch((error) => {
           console.log(error);

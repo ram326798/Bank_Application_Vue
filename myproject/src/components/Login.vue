@@ -1,4 +1,5 @@
 <template>
+  <!--Login Page Template-->
   <div class="container">
     <form>
       <div class="well">
@@ -33,8 +34,8 @@ export default {
 
   data() {
     return {
+      // initialising variables as null
       User: {
-        // name: "",
         username: "",
         password: "",
       },
@@ -45,29 +46,31 @@ export default {
   methods: {
     handleSubmit() {
       this.submitted = true;
-
-      // stop here if form is invalid
+      // assign values to new user
       let newUser = {
-        // name: this.User.name,
         username: this.User.username,
         password: this.User.password,
       };
       console.log(newUser);
       axios
+        // posting user details into database
         .post("http://127.0.0.1:5000/accounts/login", newUser)
         .then((response) => {
+          // comparing values with database vzalues
           if (response.username === this.username && response.password === this.password) {
             this.message = response;
 
             console.log(response);
             router.push({
               name: "accountdetails",
+              // send username to account details page using params
               params: { username: newUser.username },
             });
           } else {
             this.message = "Invalid Credentials";
           }
         })
+        // if user does not exist in database throws error
         .catch((error) => {
           console.log(error.response);
           this.message = "Invalid Credentials";

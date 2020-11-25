@@ -1,4 +1,5 @@
 <template>
+  <!--App component is like parent component-->
   <div id="app">
     <div id="nav">
       <h2>Bank Management</h2>

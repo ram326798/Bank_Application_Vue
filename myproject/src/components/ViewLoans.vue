@@ -1,7 +1,9 @@
 <template>
+  <!--View Loans page template-->
   <div class="hello">
     <h1>{{ msg }}</h1>
     <div class="loans">
+      <!--when user clicks on account details button it will navigate to account detials page send username using params-->
       <router-link
         :to="{
           name: 'accountdetails',
@@ -16,13 +18,16 @@
         }"
         ><button class="btn1 btn-md btn-info">Apply Loan</button></router-link
       >
+      <!--When user clicks on logout it will logout and navigate to login page-->
       <router-link to="/">
         <button type="button" class="btn1 btn-md btn-danger">logout</button>
       </router-link>
     </div>
+    <!--if loans are not availabel it will show the below message-->
     <div v-if="!IsLoanAvailable" style="text-align: left; margin-left: 235px">
       <h3 style="color: red; margin-left: 150px; margin-top: 45px">No active loans at this moment to show!!!</h3>
     </div>
+    <!--Table to show loans avaiable for a user-->
     <table v-if="IsLoanAvailable" border="1" class="center">
       <thead>
         <tr>
@@ -59,6 +64,7 @@ export default {
   data: function () {
     return {
       msg: "Loan Details",
+      // initialising username with previous component username value
       username: this.$route.params.username,
       IsLoanAvailable: true,
       Loan: [],
@@ -66,6 +72,7 @@ export default {
   },
   methods: {
     getLoan(username) {
+      // Using get method we are getting loan details from database
       axios.get("http://127.0.0.1:5000/accounts/login/" + this.username + "/loans").then(
         (res) => {
           if (res.data.length) {

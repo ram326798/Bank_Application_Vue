@@ -1,8 +1,10 @@
 <template>
   <div v-if="currentUser" class="edit-form">
+    <!--Account details page-->
     <h4>Account Details</h4>
     <form>
       <div class="accounts">
+        <!--Sending username using params to view loans page when user clicks on loans button -->
         <router-link
           :to="{
             name: 'ViewLoans',
@@ -61,6 +63,7 @@ export default {
   methods: {
     getUser() {
       axios
+        // method to fetch account details of user
         .get("http://127.0.0.1:5000/accounts/login/" + this.username)
         .then((response) => {
           this.currentUser = response.data;
@@ -76,7 +79,7 @@ export default {
 
     updateUser() {
       let User = {
-        // name: this.currentUser.name,
+        // Updating user details
         username: this.currentUser.username,
         password: this.currentUser.password,
         address: this.currentUser.address,
@@ -90,6 +93,7 @@ export default {
       };
       console.log(this.currentUser);
       axios
+        // sending request to update user details
         .put("http://127.0.0.1:5000/accounts/login/" + this.currentUser.username, User)
         .catch(() => {})
         .then((response) => {
@@ -98,10 +102,11 @@ export default {
         })
         .catch((e) => {
           console.log(e);
-          this.message = "An error occured. Please read the exception message" + " - " + e.message;
+          this.message = "Please fill all the fields" + " - " + e.message;
         });
     },
   },
+  // calling get method in mounted fucntion using username taken from login page
   mounted() {
     this.message = "";
     this.getUser(this.$route.params.username);
